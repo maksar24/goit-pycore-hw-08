@@ -1,8 +1,11 @@
-from address_book import AddressBook
+import atexit
+from storage import save_data, load_data
 from commands import add_contact, change_phone, show_phone, show_all_contacts, add_birthday, show_birthday, birthdays
 
-def main():
-    book = AddressBook()
+book = load_data()
+atexit.register(save_data, book)
+
+def main(): 
     print("Welcome to the bot assistant!")
 
     while True:
